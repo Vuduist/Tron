@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tron Transaction Info</title>
+</head>
+<body>
+    <h1>Информация о транзакции Tron</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="tx_hash" placeholder="Введите хеш транзакции" required>
+        <button type="submit">Показать</button>
+    </form>
+    {% if result %}
+        <h2>Результат:</h2>
+        <pre>{{ result|safe }}</pre>
+    {% elif error %}
+        <p style="color:red;">Ошибка: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
